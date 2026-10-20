@@ -7,6 +7,9 @@
   <title>Supplement AI Lab | Evidence-minded supplement research</title>
   <style>
     :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#e9f1fd;background:#080f1c;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse 65% 40% at 55% -15%,#193965 0%,transparent 80%),#080f1c}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #70c6ff;outline-offset:3px}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:27px 0;border-bottom:1px solid #25344a}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.5px;font-size:18px}.logo{display:grid;place-items:center;width:39px;height:39px;background:linear-gradient(135deg,#3779ec,#18bba8);border-radius:13px;font-size:21px}.tag{color:#a5b7d0;font-size:12px;border:1px solid #34455e;border-radius:20px;padding:7px 11px}.hero{padding:58px 0 28px;max-width:810px}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#61d6c0;font-weight:800}.hero h1{font-size:clamp(34px,5.5vw,57px);letter-spacing:-2px;line-height:1.1;margin:15px 0}.hero h1 span{color:#6daaff}.sub{font-size:16px;line-height:1.8;color:#9db0ca;max-width:660px}.search{background:#111f33;border:1px solid #30445e;padding:22px;border-radius:20px;box-shadow:0 16px 50px #0004}.search label{font-size:13px;font-weight:700;color:#c4d5e9;display:block;margin-bottom:11px}.inputrow{display:flex;gap:12px}.search input{flex:1;min-width:0;background:#091525;color:#f5faff;border:1px solid #425671;border-radius:12px;padding:15px 17px;font-size:16px}.primary{background:linear-gradient(115deg,#347df5,#2465d3);border:0;border-radius:12px;padding:15px 22px;color:#fff;font-weight:750;white-space:nowrap}.primary:disabled{opacity:.6;cursor:wait}.hint{color:#8095b2;font-size:12px;margin-top:12px}.status{display:none;margin:18px 0;padding:15px 18px;border:1px solid #365375;border-radius:13px;background:#13243b;color:#c5dcf8}.status.error{border-color:#8c4351;background:#321c2a;color:#ffd1d7}.result{display:none;padding:32px 0 40px}.resultHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.resultHead h2{font-size:clamp(23px,3.5vw,31px);margin:0 0 6px}.resultHead p{margin:0;color:#8fa6c3;font-size:13px}.chip{display:inline-block;border:1px solid #245b57;color:#70dec7;background:#102d31;border-radius:20px;font-size:12px;padding:8px 12px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.card{background:#111e30;border:1px solid #2a3b51;border-radius:17px;padding:23px;min-width:0;transition:border-color .2s,transform .2s}.card:hover{border-color:#426b9a;transform:translateY(-2px)}.card .icon{width:37px;height:37px;display:grid;place-items:center;background:#19334a;border:1px solid #315372;border-radius:11px;font-size:19px;margin-bottom:17px}.card h3{margin:0 0 10px;font-size:17px;letter-spacing:-.2px}.card p{color:#b6c8de;line-height:1.75;font-size:14px;margin:0;white-space:pre-line;overflow-wrap:anywhere}.card.wide{grid-column:1/-1}.footer{border-top:1px solid #26364b;margin-top:32px;padding:25px 0 42px;display:flex;justify-content:space-between;gap:16px;color:#8ea4be;font-size:12px;line-height:1.7}.footer strong{color:#c7d8ed}.skeleton{height:16px;border-radius:8px;background:linear-gradient(90deg,#21364e,#344c67,#21364e);background-size:200% 100%;animation:shimmer 1.5s infinite}@keyframes shimmer{to{background-position:-200% 0}}@media(max-width:720px){.top{padding:18px 0}.tag{display:none}.hero{padding:38px 0 20px}.hero h1{letter-spacing:-1.3px}.search{padding:16px}.inputrow{flex-direction:column}.primary{width:100%}.cards{grid-template-columns:1fr}.card.wide{grid-column:auto}.resultHead{align-items:flex-start;flex-direction:column}.footer{flex-direction:column}}@media(prefers-reduced-motion:reduce){.card,.skeleton{transition:none;animation:none}}
+  
+    /* Phase 1.1: compact clinical workspace */
+    .hero{padding:38px 0 20px}.hero h1{font-size:clamp(30px,4.6vw,46px);margin:10px 0}.sub{font-size:14px;line-height:1.6}.search{padding:18px}.result{padding-top:25px}.resultHead{margin-bottom:16px}.resultTools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:thin}.tab{flex:none;background:#12253c;border:1px solid #304963;color:#b6cce7;border-radius:12px;padding:10px 16px;font-weight:700;font-size:13px}.tab.active{background:#22558a;border-color:#5ca6ed;color:white}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{padding:19px;border-radius:14px}.card .icon{width:32px;height:32px;margin-bottom:12px;font-size:16px}.card h3{font-size:15px;margin-bottom:12px}.card ul{margin:0;padding-left:19px;display:grid;gap:10px}.card li{font-size:13.5px;line-height:1.65;color:#c6d7eb;overflow-wrap:anywhere}.card li::marker{color:#66d5c5}.card.wide{grid-column:auto}.empty{border:1px dashed #36506d;border-radius:16px;padding:28px;color:#adc0d8;text-align:center}.loadingPanel{display:none;margin-top:18px;border:1px solid #2e4a6b;background:#102139;border-radius:16px;padding:19px}.loadingPanel strong{font-size:14px}.loadingPanel p{color:#9db7d2;font-size:12px}.progressTrack{height:5px;background:#28415d;border-radius:10px;overflow:hidden;margin-top:14px}.progressBar{height:100%;width:34%;background:linear-gradient(90deg,#3d8efa,#68dec4);border-radius:10px;animation:move 1.4s ease-in-out infinite alternate}@keyframes move{from{transform:translateX(0)}to{transform:translateX(190%)}}.secondaryBtn{border:1px solid #365575;background:#152e49;color:#d6eaff;border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700}.secondaryBtn:hover{background:#204264}.sectionNote{font-size:12px;color:#92aaca;margin:0 0 12px}.resultHead h2{font-size:clamp(24px,3vw,30px)}@media(max-width:720px){.hero{padding-top:27px}.cards{grid-template-columns:1fr}.resultTools{width:100%}.tabs{margin-right:-18px}.card{padding:17px}}
   </style>
 </head>
 <body>
@@ -15,39 +18,71 @@
     <main>
       <section class="hero"><div class="eyebrow">Research smarter · Learn deeper</div><h1>Explore supplements.<br><span>Understand the evidence.</span></h1><p class="sub">A structured, AI-assisted reference for pharmacists. Explore mechanisms, clinical uses, dosing considerations, safety, and evidence limitations in one clear workspace.</p></section>
       <form class="search" id="form"><label for="supplement">SUPPLEMENT NAME</label><div class="inputrow"><input id="supplement" name="supplement" placeholder="Try Vitamin D3, Magnesium, CoQ10…" minlength="2" maxlength="80" autocomplete="off" required/><button class="primary" id="analyze" type="submit">✦ Analyze supplement</button></div><div class="hint">Educational research only · Responses are AI-generated and require clinical verification.</div></form>
-      <div id="status" class="status" role="status" aria-live="polite"></div>
-      <section id="result" class="result" aria-live="polite"><div class="resultHead"><div><h2 id="resultName"></h2><p>Structured clinical reference · AI-generated</p></div><span class="chip">✦ Analysis complete</span></div><div id="cards" class="cards"></div></section>
+      <div id="status" class="status" role="status" aria-live="polite"></div><div id="loadingPanel" class="loadingPanel" role="status" aria-live="polite"><strong>Preparing your clinical reference…</strong><p>Generating concise sections. First-time analyses may take longer.</p><div class="progressTrack"><div class="progressBar"></div></div></div>
+      <section id="result" class="result" aria-live="polite"><div class="resultHead"><div><h2 id="resultName"></h2><p>Structured clinical reference · AI-generated</p></div><div class="resultTools"><span class="chip">✦ Analysis complete</span><button id="copyResult" class="secondaryBtn" type="button">Copy analysis</button></div></div><div id="tabs" class="tabs" role="tablist" aria-label="Clinical sections"></div><p id="sectionNote" class="sectionNote"></p><div id="cards" class="cards"></div></section>
     </main>
     <footer class="footer"><div><strong>Supplement AI Lab</strong> · Evidence-minded learning for pharmacists</div><div>Not medical advice. Verify dosing, interactions, and clinical claims with authoritative references.</div></footer>
   </div>
   <script>
-    const fields=[
-      ['overview','Overview','◈'],['mechanism','Mechanism of action','⚙'],['clinicalUses','Clinical uses & benefits','✚'],['dosage','Typical adult dosage','◷'],['adverseEffects','Adverse effects','⚠'],['interactions','Drug interactions','⇄'],['contraindications','Contraindications & precautions','⛨'],['specialPopulations','Special populations','♧'],['evidenceLimitations','Evidence & limitations','▤'],['clinicalPearls','Clinical pearls','✦']
+    const fields = [
+      ['overview','Overview','◈','overview'],['mechanism','Mechanism of action','⚙','overview'],
+      ['clinicalUses','Clinical uses & benefits','✚','benefits'],['dosage','Typical adult dosage','◷','dosage'],
+      ['adverseEffects','Adverse effects','⚠','safety'],['interactions','Drug interactions','⇄','safety'],
+      ['contraindications','Contraindications & precautions','⛨','safety'],['specialPopulations','Special populations','♧','safety'],
+      ['evidenceLimitations','Evidence & limitations','▤','evidence'],['clinicalPearls','Clinical pearls','✦','overview']
     ];
-    const form=document.getElementById('form'),button=document.getElementById('analyze'),status=document.getElementById('status'),result=document.getElementById('result'),cards=document.getElementById('cards');
-    function showStatus(message,error=false){status.textContent=message;status.className='status'+(error?' error':'');status.style.display='block'}
+    const groups = [['overview','Overview'],['benefits','Benefits'],['dosage','Dosage'],['safety','Safety'],['evidence','Evidence'],['all','All sections']];
+    const form=document.getElementById('form'), button=document.getElementById('analyze'), status=document.getElementById('status');
+    const result=document.getElementById('result'), cards=document.getElementById('cards'), tabs=document.getElementById('tabs');
+    const loading=document.getElementById('loadingPanel'), note=document.getElementById('sectionNote');
+    let current=null, active='overview';
+    function showStatus(message,error=false){status.textContent=message;status.className='status'+(error?' error':'');status.style.display='block';}
+    function cleanItems(value){
+      if(Array.isArray(value))return value.map(v=>String(v||'').trim()).filter(Boolean);
+      if(typeof value!=='string')return [];
+      return value.split(/\n+|(?<=\.)\s+(?=[A-Z])/).map(x=>x.replace(/^[-•*\d.)\s]+/,'').trim()).filter(Boolean);
+    }
+    function render(){
+      if(!current)return;
+      tabs.replaceChildren();
+      for(const [key,label] of groups){
+        const tab=document.createElement('button');tab.type='button';tab.className='tab'+(key===active?' active':'');
+        tab.textContent=label;tab.setAttribute('role','tab');tab.setAttribute('aria-selected',String(key===active));
+        tab.addEventListener('click',()=>{active=key;render();});tabs.append(tab);
+      }
+      cards.replaceChildren();
+      const shown=fields.filter(f=>active==='all'||f[3]===active);
+      note.textContent=`${shown.length} focused sections · AI-generated educational content · Verify clinical details`;
+      for(const [key,title,icon] of shown){
+        const article=document.createElement('article');article.className='card';
+        const badge=document.createElement('div');badge.className='icon';badge.textContent=icon;badge.setAttribute('aria-hidden','true');
+        const heading=document.createElement('h3');heading.textContent=title;
+        const list=document.createElement('ul');
+        const items=cleanItems(current.sections[key]);
+        for(const item of (items.length?items:['Information unavailable; consult an authoritative reference.'])){
+          const li=document.createElement('li');li.textContent=item;list.append(li);
+        }
+        article.append(badge,heading,list);cards.append(article);
+      }
+    }
+    document.getElementById('copyResult').addEventListener('click',async()=>{
+      if(!current)return;
+      const content=[current.supplement,...fields.map(([key,title])=>`${title}\n${cleanItems(current.sections[key]).map(x=>'• '+x).join('\n')}`),'Verify with authoritative clinical references.'].join('\n\n');
+      try{await navigator.clipboard.writeText(content);const b=document.getElementById('copyResult');b.textContent='✓ Copied';setTimeout(()=>b.textContent='Copy analysis',1700);}catch{showStatus('Copy was blocked by the browser.',true);}
+    });
     form.addEventListener('submit',async event=>{
-      event.preventDefault();
-      const supplement=document.getElementById('supplement').value.trim();
-      if(supplement.length<2)return;
-      button.disabled=true;button.textContent='Analyzing…';result.style.display='none';showStatus('Contacting Gemini securely and preparing your structured reference…');
+      event.preventDefault();const supplement=document.getElementById('supplement').value.trim();if(supplement.length<2)return;
+      button.disabled=true;button.textContent='Analyzing…';result.style.display='none';status.style.display='none';loading.style.display='block';
       try{
         const response=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({supplement})});
         const data=await response.json();
         if(!response.ok)throw new Error(data.error||'Analysis failed. Please retry.');
         if(!data.sections||typeof data.sections!=='object')throw new Error('Unexpected response format. Please retry.');
-        document.getElementById('resultName').textContent=data.supplement||supplement;
-        cards.replaceChildren();
-        for(const [key,title,icon] of fields){
-          const article=document.createElement('article');article.className='card'+(['overview','evidenceLimitations'].includes(key)?' wide':'');
-          const badge=document.createElement('div');badge.className='icon';badge.textContent=icon;badge.setAttribute('aria-hidden','true');
-          const heading=document.createElement('h3');heading.textContent=title;
-          const paragraph=document.createElement('p');paragraph.textContent=data.sections[key]||'Information not available; verify with a clinical reference.';
-          article.append(badge,heading,paragraph);cards.append(article);
-        }
-        status.style.display='none';result.style.display='block';result.scrollIntoView({behavior:'smooth',block:'start'});
-      }catch(error){showStatus(error.message||'Something went wrong.',true)}
-      finally{button.disabled=false;button.textContent='✦ Analyze supplement'}
+        current={supplement:data.supplement||supplement,sections:data.sections};active='overview';
+        document.getElementById('resultName').textContent=current.supplement;
+        render();result.style.display='block';result.scrollIntoView({behavior:'smooth',block:'start'});
+      }catch(error){showStatus(error.message||'Something went wrong.',true);}
+      finally{loading.style.display='none';button.disabled=false;button.textContent='✦ Analyze supplement';}
     });
   </script>
 </body>
