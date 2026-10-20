@@ -18,7 +18,7 @@
     <main>
       <section class="hero"><div class="eyebrow">Research smarter · Learn deeper</div><h1>Explore supplements.<br><span>Understand the evidence.</span></h1><p class="sub">A structured, AI-assisted reference for pharmacists. Explore mechanisms, clinical uses, dosing considerations, safety, and evidence limitations in one clear workspace.</p></section>
       <form class="search" id="form"><label for="supplement">SUPPLEMENT NAME</label><div class="inputrow"><input id="supplement" name="supplement" placeholder="Try Vitamin D3, Magnesium, CoQ10…" minlength="2" maxlength="80" autocomplete="off" required/><button class="primary" id="analyze" type="submit">✦ Analyze supplement</button></div><div class="hint">Educational research only · Responses are AI-generated and require clinical verification.</div></form>
-      <div id="status" class="status" role="status" aria-live="polite"></div><div id="loadingPanel" class="loadingPanel" role="status" aria-live="polite"><strong>Preparing your clinical reference…</strong><p>Generating concise sections. First-time analyses may take longer.</p><div class="progressTrack"><div class="progressBar"></div></div></div>
+      <div id="status" class="status" role="status" aria-live="polite"></div><div id="loadingPanel" class="loadingPanel" role="status" aria-live="polite"><strong>Preparing your clinical reference…</strong><p>Generating a focused clinical summary. Please wait…</p><div class="progressTrack"><div class="progressBar"></div></div></div>
       <section id="result" class="result" aria-live="polite"><div class="resultHead"><div><h2 id="resultName"></h2><p>Structured clinical reference · AI-generated</p></div><div class="resultTools"><span class="chip">✦ Analysis complete</span><button id="copyResult" class="secondaryBtn" type="button">Copy analysis</button></div></div><div id="tabs" class="tabs" role="tablist" aria-label="Clinical sections"></div><p id="sectionNote" class="sectionNote"></p><div id="cards" class="cards"></div></section>
     </main>
     <footer class="footer"><div><strong>Supplement AI Lab</strong> · Evidence-minded learning for pharmacists</div><div>Not medical advice. Verify dosing, interactions, and clinical claims with authoritative references.</div></footer>
@@ -36,6 +36,10 @@
     const result=document.getElementById('result'), cards=document.getElementById('cards'), tabs=document.getElementById('tabs');
     const loading=document.getElementById('loadingPanel'), note=document.getElementById('sectionNote');
     let current=null, active='overview';
+    const CACHE_PREFIX='supplement-lab-v12:';
+    function cacheKey(name){return CACHE_PREFIX+name.trim().toLowerCase();}
+    function getCached(name){try{const item=JSON.parse(localStorage.getItem(cacheKey(name)));return item&&Date.now()-item.savedAt<7*86400000?item.data:null;}catch{return null;}}
+    function saveCached(name,data){try{localStorage.setItem(cacheKey(name),JSON.stringify({savedAt:Date.now(),data}));}catch{}}
     function showStatus(message,error=false){status.textContent=message;status.className='status'+(error?' error':'');status.style.display='block';}
     function cleanItems(value){
       if(Array.isArray(value))return value.map(v=>String(v||'').trim()).filter(Boolean);
@@ -74,9 +78,13 @@
       event.preventDefault();const supplement=document.getElementById('supplement').value.trim();if(supplement.length<2)return;
       button.disabled=true;button.textContent='Analyzing…';result.style.display='none';status.style.display='none';loading.style.display='block';
       try{
-        const response=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({supplement})});
-        const data=await response.json();
-        if(!response.ok)throw new Error(data.error||'Analysis failed. Please retry.');
+        let data=getCached(supplement);
+        if(!data){
+          const response=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({supplement})});
+          data=await response.json();
+          if(!response.ok)throw new Error(data.error||'Analysis failed. Please retry.');
+          if(data.sections)saveCached(supplement,data);
+        }
         if(!data.sections||typeof data.sections!=='object')throw new Error('Unexpected response format. Please retry.');
         current={supplement:data.supplement||supplement,sections:data.sections};active='overview';
         document.getElementById('resultName').textContent=current.supplement;
