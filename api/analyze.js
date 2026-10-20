@@ -3,12 +3,13 @@ export default async function handler(req, res) {
   // 1. Allow POST requests only
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
+
     return res.status(405).json({
       error: 'Method not allowed'
     });
   }
 
-  // 2. Read the secret API key
+  // 2. Read Gemini API key from Vercel
   const key = process.env.GEMINI_API_KEY;
 
   if (!key) {
@@ -62,7 +63,7 @@ Verify with authoritative clinical references.
   try {
     // 5. Send request to Gemini
     const upstream = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent',
       {
         method: 'POST',
         headers: {
@@ -88,7 +89,7 @@ Verify with authoritative clinical references.
       }
     );
 
-    // 6. Log detailed Gemini errors
+    // 6. Log Gemini API errors
     if (!upstream.ok) {
       const errorBody = await upstream.text();
 
@@ -119,7 +120,7 @@ Verify with authoritative clinical references.
       });
     }
 
-    // 8. Return successful response
+    // 8. Return successful result
     return res.status(200).json({
       result
     });
@@ -135,3 +136,4 @@ Verify with authoritative clinical references.
     });
   }
 }
+
