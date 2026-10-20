@@ -10,14 +10,17 @@
   
     /* Phase 1.1: compact clinical workspace */
     .hero{padding:38px 0 20px}.hero h1{font-size:clamp(30px,4.6vw,46px);margin:10px 0}.sub{font-size:14px;line-height:1.6}.search{padding:18px}.result{padding-top:25px}.resultHead{margin-bottom:16px}.resultTools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:thin}.tab{flex:none;background:#12253c;border:1px solid #304963;color:#b6cce7;border-radius:12px;padding:10px 16px;font-weight:700;font-size:13px}.tab.active{background:#22558a;border-color:#5ca6ed;color:white}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{padding:19px;border-radius:14px}.card .icon{width:32px;height:32px;margin-bottom:12px;font-size:16px}.card h3{font-size:15px;margin-bottom:12px}.card ul{margin:0;padding-left:19px;display:grid;gap:10px}.card li{font-size:13.5px;line-height:1.65;color:#c6d7eb;overflow-wrap:anywhere}.card li::marker{color:#66d5c5}.card.wide{grid-column:auto}.empty{border:1px dashed #36506d;border-radius:16px;padding:28px;color:#adc0d8;text-align:center}.loadingPanel{display:none;margin-top:18px;border:1px solid #2e4a6b;background:#102139;border-radius:16px;padding:19px}.loadingPanel strong{font-size:14px}.loadingPanel p{color:#9db7d2;font-size:12px}.progressTrack{height:5px;background:#28415d;border-radius:10px;overflow:hidden;margin-top:14px}.progressBar{height:100%;width:34%;background:linear-gradient(90deg,#3d8efa,#68dec4);border-radius:10px;animation:move 1.4s ease-in-out infinite alternate}@keyframes move{from{transform:translateX(0)}to{transform:translateX(190%)}}.secondaryBtn{border:1px solid #365575;background:#152e49;color:#d6eaff;border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700}.secondaryBtn:hover{background:#204264}.sectionNote{font-size:12px;color:#92aaca;margin:0 0 12px}.resultHead h2{font-size:clamp(24px,3vw,30px)}@media(max-width:720px){.hero{padding-top:27px}.cards{grid-template-columns:1fr}.resultTools{width:100%}.tabs{margin-right:-18px}.card{padding:17px}}
+    /* Arabic clinical explanations while preserving English scientific terminology */
+    .card li[dir="auto"]{text-align:start;line-height:1.9}
+    .card li:dir(rtl){padding-right:3px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="top"><div class="brand"><span class="logo" aria-hidden="true">✦</span> Supplement AI Lab</div><span class="tag">PHARMACY RESEARCH WORKSPACE</span></header>
     <main>
-      <section class="hero"><div class="eyebrow">Research smarter · Learn deeper</div><h1>Explore supplements.<br><span>Understand the evidence.</span></h1><p class="sub">A structured, AI-assisted reference for pharmacists. Explore mechanisms, clinical uses, dosing considerations, safety, and evidence limitations in one clear workspace.</p></section>
-      <form class="search" id="form"><label for="supplement">SUPPLEMENT NAME</label><div class="inputrow"><input id="supplement" name="supplement" placeholder="Try Vitamin D3, Magnesium, CoQ10…" minlength="2" maxlength="80" autocomplete="off" required/><button class="primary" id="analyze" type="submit">✦ Analyze supplement</button></div><div class="hint">Educational research only · Responses are AI-generated and require clinical verification.</div></form>
+      <section class="hero"><div class="eyebrow">Research smarter · Learn deeper</div><h1>Explore supplements.<br><span>Understand the evidence.</span></h1><p class="sub">Explore. Understand. Apply.</p></section>
+      <form class="search" id="form"><label for="supplement">SUPPLEMENT NAME</label><div class="inputrow"><input id="supplement" name="supplement" placeholder="Try Vitamin D3, Magnesium, CoQ10…" minlength="2" maxlength="80" autocomplete="off" required/><button class="primary" id="analyze" type="submit">✦ Analyze supplement</button></div><div class="hint">Educational research only.</div></form>
       <div id="status" class="status" role="status" aria-live="polite"></div><div id="loadingPanel" class="loadingPanel" role="status" aria-live="polite"><strong>Preparing your clinical reference…</strong><p>Generating a focused clinical summary. Please wait…</p><div class="progressTrack"><div class="progressBar"></div></div></div>
       <section id="result" class="result" aria-live="polite"><div class="resultHead"><div><h2 id="resultName"></h2><p>Structured clinical reference · AI-generated</p></div><div class="resultTools"><span class="chip">✦ Analysis complete</span><button id="copyResult" class="secondaryBtn" type="button">Copy analysis</button></div></div><div id="tabs" class="tabs" role="tablist" aria-label="Clinical sections"></div><p id="sectionNote" class="sectionNote"></p><div id="cards" class="cards"></div></section>
     </main>
@@ -36,7 +39,7 @@
     const result=document.getElementById('result'), cards=document.getElementById('cards'), tabs=document.getElementById('tabs');
     const loading=document.getElementById('loadingPanel'), note=document.getElementById('sectionNote');
     let current=null, active='overview';
-    const CACHE_PREFIX='supplement-lab-v12:';
+    const CACHE_PREFIX='supplement-lab-v13-ar:';
     function cacheKey(name){return CACHE_PREFIX+name.trim().toLowerCase();}
     function getCached(name){try{const item=JSON.parse(localStorage.getItem(cacheKey(name)));return item&&Date.now()-item.savedAt<7*86400000?item.data:null;}catch{return null;}}
     function saveCached(name,data){try{localStorage.setItem(cacheKey(name),JSON.stringify({savedAt:Date.now(),data}));}catch{}}
@@ -64,7 +67,7 @@
         const list=document.createElement('ul');
         const items=cleanItems(current.sections[key]);
         for(const item of (items.length?items:['Information unavailable; consult an authoritative reference.'])){
-          const li=document.createElement('li');li.textContent=item;list.append(li);
+          const li=document.createElement('li');li.textContent=item;li.dir='auto';list.append(li);
         }
         article.append(badge,heading,list);cards.append(article);
       }
